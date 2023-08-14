@@ -31,7 +31,7 @@ void readFile(char *filename, stack_t **stack)
 			line_count++;
 			continue;
 		}
-		f = execOpcode(line);
+		f = executeOpcode(line);
 		if (f == NULL)
 		{
 			fprintf(stderr, "L%d: unknown instruction %s\n", line_count, line);
