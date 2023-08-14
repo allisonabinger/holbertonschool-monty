@@ -42,7 +42,7 @@ typedef struct instruction_s
 {
         char *opcode;
         opcode_func f;
-} instruction_t;
+} opcode_func;
 
 /*func prototypes*/
 
@@ -54,6 +54,7 @@ void push(stack_t **stack, int value, unsigned int line_number);
 void pall(stack_t **stack, unsigned int line_number);
 /*helper funcs*/
 int is_int(char *str);
+void free_stack(stack_t *stack);
 
-extern instruction_t opcodes[];
+extern opcode_func opcodes[];
 #endif

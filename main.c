@@ -44,7 +44,8 @@ int main(int argc, char *argv[])
 }
 
 /*array of functions*/
-opcode_func opcodes[] = {
+opcode_func opcodes[] = 
+{
 	{"push", push},
 	{"pall", pall},
 	/*will add more here*/

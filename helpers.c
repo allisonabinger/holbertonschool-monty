@@ -14,7 +14,7 @@ int is_int(char *str)
 
     while (*str)
     {
-        if (!isdigit(*str))
+        if (!is_int(*str))
         {
             return (0); /*non-digit char found*/
         }
