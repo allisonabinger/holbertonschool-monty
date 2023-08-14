@@ -7,6 +7,11 @@
  * @stack: pointer to the top of the stack
  */
 
+char *checkLine(char *line, stack_t **top, unsigned int line_number)
+{
+    return (NULL);
+}
+
 void readFile(char *filename, stack_t **stack)
 {
 	FILE *fp;
@@ -42,4 +47,8 @@ void readFile(char *filename, stack_t **stack)
 	}
 	free(line);
 	fclose(fp);
+}
+
+void freeStack(stack_t *head)
+{
 }
