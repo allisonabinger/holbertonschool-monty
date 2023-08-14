@@ -42,7 +42,7 @@ void pop(stack_t **top, unsigned int line_number);
 void swap(stack_t **top, unsigned int line_number);
 void add(stack_t **top, unsigned int line_number);
 void nop(stack_t **top, unsigned int line_number);
-void (*execOpcode(char *s))(stack_t **, unsigned int);
+void (*executeOpcode(char *s))(stack_t **, unsigned int);
 char *checkLine(char *line, stack_t **top, unsigned int line_number);
 void readFile(char *filename, stack_t **stack);
 void freeStack(stack_t *head);

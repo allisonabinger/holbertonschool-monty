@@ -2,7 +2,6 @@
 
 /**
  * freeStack - frees stack
- *
  * @head: head node of list
  */
 void freeStack(stack_t *head)
