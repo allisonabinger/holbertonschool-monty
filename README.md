@@ -28,6 +28,8 @@ Traverses the linked list and prints each node's value.
 
 Contains the is_integer function that checks if a given string represents an integer.
 Supports the validation of integer arguments for the "push" opcode.
+Also contains the free_stack functin to clean up memory occupied on stack
+
 ###monty.h:
 
 Contains the declarations of structures, functions, and external variables.

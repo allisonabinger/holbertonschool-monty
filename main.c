@@ -1,12 +1,13 @@
 #include "monty.h"
-#include <stdio.h>
-#include <stdlib.h>
+
+stack_t *top = NULL;
+
 /**
- * main - entry point
- * @argc: number of arguments
- * @argv: array of arguments
- * Return: 0
- */
+ * main - Entry point for Monty
+ * @argc: number of CL arguments
+ * @argv: array of strings of arguments
+ * Return: always 0
+*/
 int main(int argc, char *argv[])
 {
 	FILE *file;
@@ -15,26 +16,37 @@ int main(int argc, char *argv[])
 	ssize_t read;
 	unsigned int line_number = 1;
 
+	/*checks for correct # of args*/
 	if (argc != 2)
 	{
-		printf("USAGE: monty file\n");
+		fprintf(stderr, "USAGE: monty file\n");
 		exit(EXIT_FAILURE);
 	}
+	/*open input file*/
+	file = fopen(argv[1], "r");
 
-	file = fopen(argv[1]. "r");
 	if (!file)
 	{
 		fprintf(stderr, "Error: Can't open file %s\n", argv[1]);
 		exit(EXIT_FAILURE);
 	}
-
-	while ((read = getline(&line, &len, file)) != -1)
+	/*call func to process each line*/
+	while((read = getline(&line, &len, file)) != -1)
 	{
-		/*Process line here*/
+		process_line(line, line_number);
+		line_number++;
 	}
-
+	/*cleanup*/
 	free(line);
+	free_stack(top);
 	fclose(file);
-
 	return (0);
 }
+
+/*array of functions*/
+opcode_func opcodes[] = {
+	{"push", push},
+	{"pall", pall},
+	/*will add more here*/
+	{NULL, NULL}
+};

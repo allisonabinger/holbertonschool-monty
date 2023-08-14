@@ -1,6 +1,6 @@
 #include "monty.h"
 /**
- * process_line - tokenizes opcode
+ * process_line - parse line and calls execute_opcode
  * @line: argument passed from user
  * @line_number: line number passed from user.
  */
@@ -9,6 +9,7 @@ void process_line(char *line, unsigned int line_number)
 	char *opcode;
 	char *arg;
 
+	/*parsing to get opcode and argument*/
 	opcode = strtok(line, " \t\n");
 
 	if (opcode)
@@ -17,18 +18,7 @@ void process_line(char *line, unsigned int line_number)
 		execute_opcode(opcode, arg, line_number);
 	}
 }
-/*array of functions*/
 
-typedef void (*opcode_func)(stack_t **, int);
-struct
-{
-	const char *opcode;
-	opcode_func func:
-} opcodes[] = {
-	{"push", push},
-	{"pall", pall},
-	{NULL, NULL}
-};
 /**
  * execute_opcode - handles opcode execution and argument validation
  * @opcode: opcode
@@ -37,6 +27,7 @@ struct
  */
 void execute_opcode(char *opcode, char *arg, unsigned int line_number)
 {
+	stack_t *top = NULL;
 	opcode_func func = NULL;
 	int i;
 
@@ -44,7 +35,7 @@ void execute_opcode(char *opcode, char *arg, unsigned int line_number)
 	{
 		if (strcmp(opcode, opcodes[i].opcode) == 0)
 		{
-			func = opcode[i].func;
+			func = opcodes[i].f;
 			break;
 		}
 	}
@@ -54,5 +45,6 @@ void execute_opcode(char *opcode, char *arg, unsigned int line_number)
 		fprintf(stderr, "L%d: unknown instruction %s\n", line_number, opcode);
 		exit(EXIT_FAILURE);
 	}
-	func(&top, line_number);
-}			
+	/*execute the opcode func*/
+	func(&top, arg, line_number);
+}
