@@ -1,10 +1,10 @@
 #include "monty.h"
 /**
- * main - interprets monty files
+ * main - entry point, interprets monty files
  *
  * @argc: argument count
- * @argv: argument vector
- * Return: 0 on success and 1 on failure
+ * @argv: argument string
+ * Return: 0 (success)
  */
 int main(int argc, char **argv)
 {

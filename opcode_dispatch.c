@@ -1,11 +1,9 @@
 #include "monty.h"
 
 /**
- *get_monty_op - selects function to perform
+ *execOpcode - selects function based on opcode
  *
- *@s: operator passed as argument to program
- *
- *Return: operation or NULL
+ *@s: operator arg
  */
 
 void (*executeOpcode(char *s))(stack_t **stack, unsigned int line_number)

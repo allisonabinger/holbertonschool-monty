@@ -7,14 +7,14 @@
 #include <stdio.h>
 #include <string.h>
 #include <errno.h>
+
 /**
- * struct stack_s - doubly linked list representation of a stack (or queue)
+ * struct stack_s - dll for stack (or queue)
  * @n: integer
- * @prev: points to the previous element of stack
- * @next: points to the next element of stack
- *
- * Description: doubly linked list node structure
+ * @prev: points to the previous element 
+ * @next: points to the next element
  */
+
 typedef struct stack_s
 {
         int n;
@@ -23,12 +23,9 @@ typedef struct stack_s
 } stack_t;
 
 /**
- * struct instruction_s - opcode and its function
+ * struct instruction_s - opcodes
  * @opcode: the opcode
- * @f: function to handle the opcode
- *
- * Description: opcode and its function
- * for stack, queues, LIFO, FIFO
+ * @f: opcode funcs
  */
 typedef struct instruction_s
 {
@@ -36,6 +33,9 @@ typedef struct instruction_s
         void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
+/*Prototypes*/
+int is_int(char *arg);
+int isDigit(int c);
 void push(stack_t **stack, unsigned int line_number);
 void pall(stack_t **top, unsigned int line_number);
 void pint(stack_t **top, unsigned int line_number);

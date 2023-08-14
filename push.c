@@ -34,17 +34,16 @@ char *check_line(char *line, stack_t **top, unsigned int line_number)
 }
 /**
  * push - pushes an element to top of stack
- * @stack: pointer to the top of the stack
+ * @stack: pointer to the top of stack
  * @value: value to push to top of stack
  * @line_number: line # being processes
- * Return: void
-*/
+ */
+
 /**
  * push - adds a new element to the top of the stack
  *
  * @top: top node of stack
  * @line_number: current line number of monty file
- *
  */
 void push(stack_t **top, unsigned int line_number)
 {
