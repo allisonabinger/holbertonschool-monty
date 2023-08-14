@@ -7,7 +7,7 @@
  * @stack: pointer to the top of the stack
  */
 
-void *readFile(char *filename, stack_t **stack)
+void readFile(char *filename, stack_t **stack)
 {
 	FILE *fp;
 	size_t len = 50;
