@@ -1,7 +1,7 @@
 #include "monty.h"
 
 /**
- * freeStack - frees stack
+ * freestack - frees stack
  * @head: head node of list
  */
 void freestack(stack_t *head)

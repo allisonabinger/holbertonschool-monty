@@ -45,6 +45,6 @@ void nop(stack_t **top, unsigned int line_number);
 void (*executeOpcode(char *s))(stack_t **, unsigned int);
 char *checkLine(char *line, stack_t **top, unsigned int line_number);
 void readFile(char *filename, stack_t **stack);
-void freeStack(stack_t *head);
+void freestack(stack_t *head);
 
 #endif
