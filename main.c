@@ -18,7 +18,7 @@ int main(int argc, char **argv)
 		exit(EXIT_FAILURE);
 	}
 
-	readLine(argv[1], &stack);
+	readFile(argv[1], &stack);
 	freeStack(stack);
 	return (0);
 }

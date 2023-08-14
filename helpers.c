@@ -31,7 +31,7 @@ int is_int(char *arg)
 		return (-1);
 	for (; i < strlen(arg); i++)
 	{
-		if (idDigit(arg[i]) == -1)
+		if (isDigit(arg[i]) == -1)
 			return (-1);
 	}
 	return (0);

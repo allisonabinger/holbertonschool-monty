@@ -20,7 +20,7 @@ char *check_line(char *line, stack_t **top, unsigned int line_number)
 	if (strcmp(op_code, "push") == 0)
 	{
 		arg = strtok(NULL, WHITESPACE);
-		if (is_integer(arg) == 0 && arg != NULL)
+		if (is_int(arg) == 0 && arg != NULL)
 		{
 			parg = atoi(arg);
 		}
