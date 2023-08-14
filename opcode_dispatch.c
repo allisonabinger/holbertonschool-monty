@@ -1,4 +1,13 @@
 #include "monty.h"
+
+/*array of functions*/
+/* opcode_func array */
+instruction_t opcodes[] = {
+	{"push", push},
+	{"pall", pall},
+	{NULL, NULL}
+};
+
 /**
  * process_line - parse line and calls execute_opcode
  * @line: argument passed from user
@@ -10,41 +19,41 @@ void process_line(char *line, unsigned int line_number)
 	char *arg;
 
 	/*parsing to get opcode and argument*/
-	opcode = strtok(line, " \t\n");
+	opcode = strtok(line, WHITESPACE);
 
 	if (opcode)
 	{
-		arg = strtok(NULL, " \t\n");
-		execute_opcode(opcode, arg, line_number);
+		arg = strtok(NULL, WHITESPACE);
+		execute_opcode(&top, opcode, line_number);
 	}
 }
 
 /**
- * execute_opcode - handles opcode execution and argument validation
- * @opcode: opcode
- * @arg: argument
- * @line_number: line_number
+ * execute_opcode - Executes the opcode function based on the given opcode
+ * @stack: Double pointer to the top of the stack
+ * @opcode: The opcode to be executed
+ * @line_number: The current line number in the Monty file
+ *
+ * Return: void
  */
-void execute_opcode(char *opcode, char *arg, unsigned int line_number)
+void execute_opcode(stack_t **stack, char *opcode, unsigned int line_number)
 {
-	stack_t *top = NULL;
-	opcode_func func = NULL;
-	int i;
+    /* Iterate through the opcode_func array */
+    int i = 0;
 
-	for (i = 0; opcodes[i].opcode; i++)
-	{
-		if (strcmp(opcode, opcodes[i].opcode) == 0)
-		{
-			func = opcodes[i].f;
-			break;
-		}
-	}
+    while (opcodes[i].opcode != NULL)
+    {
+        /* Compare the opcode with the current element in the array */
+        if (strcmp(opcode, opcodes[i].opcode) == 0)
+        {
+            /* Call the corresponding function */
+            opcodes[i].f(stack, line_number);
+            return;
+        }
+        i++;
+    }
 
-	if (!func)
-	{
-		fprintf(stderr, "L%d: unknown instruction %s\n", line_number, opcode);
-		exit(EXIT_FAILURE);
-	}
-	/*execute the opcode func*/
-	func(&top, arg, line_number);
+    /* If opcode is not found, print an error message */
+    fprintf(stderr, "L%u: unknown instruction %s\n", line_number, opcode);
+    exit(EXIT_FAILURE);
 }

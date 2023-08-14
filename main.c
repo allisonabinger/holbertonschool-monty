@@ -42,12 +42,3 @@ int main(int argc, char *argv[])
 	fclose(file);
 	return (0);
 }
-
-/*array of functions*/
-opcode_func opcodes[] = 
-{
-	{"push", push},
-	{"pall", pall},
-	/*will add more here*/
-	{NULL, NULL}
-};

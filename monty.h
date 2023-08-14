@@ -27,9 +27,7 @@ typedef struct stack_s
 /*global variable *top*/
 extern stack_t *top;
 
-/*opcode func array*/
-typedef void(*opcode_func)(stack_t **stack, int value, unsigned int line_number);
-
+typedef void(*opcode_func)(stack_t **stack, unsigned int line_number);
 /**
  * struct instruction_s - opcode and its function
  * @opcode: the opcode
@@ -42,13 +40,13 @@ typedef struct instruction_s
 {
         char *opcode;
         opcode_func f;
-} opcode_func;
+} instruction_t;
 
 /*func prototypes*/
 
 /*main program*/
 void process_line(char *line, unsigned int line_number);
-void execute_opcode(char *opcode, char *arg, unsigned int line_number);
+void execute_opcode(stack_t **stack, char *opcode, unsigned int line_number);
 /*opcode funcs*/
 void push(stack_t **stack, int value, unsigned int line_number);
 void pall(stack_t **stack, unsigned int line_number);
@@ -56,5 +54,4 @@ void pall(stack_t **stack, unsigned int line_number);
 int is_int(char *str);
 void free_stack(stack_t *stack);
 
-extern opcode_func opcodes[];
 #endif
