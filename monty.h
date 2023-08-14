@@ -2,19 +2,20 @@
 #define MONTY_H
 
 #define WHITESPACE " \n\t\r"
+#define MAX_LINE_LENGTH 64
 
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
 #include <errno.h>
-
 /**
- * struct stack_s - dll for stack (or queue)
+ * struct stack_s - doubly linked list representation of a stack (or queue)
  * @n: integer
- * @prev: points to the previous element 
- * @next: points to the next element
+ * @prev: points to the previous element of stack
+ * @next: points to the next element of stack
+ *
+ * Description: doubly linked list node structure
  */
-
 typedef struct stack_s
 {
         int n;
@@ -33,7 +34,6 @@ typedef struct instruction_s
         void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
-/*Prototypes*/
 int is_int(char *arg);
 int isDigit(int c);
 void push(stack_t **stack, unsigned int line_number);
